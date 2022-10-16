@@ -26,17 +26,19 @@ public class DestroyObject : MonoBehaviour
             if (objectHP > 0)
             {
                 Destroy(other.gameObject);
-                GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+
+
+                GameObject effect = Instantiate(effectPrefab, other.transform.position, Quaternion.identity);
                 Destroy(effect, 2.0f);
+
+
             }
             else // ★★追加  そうでない場合（HPが0以下になった場合）には（条件）
             {
                 Destroy(other.gameObject);
 
-                // もう１種類のエフェクを発生させる。
-                GameObject effect2 = Instantiate(effectPrefab2, transform.position, Quaternion.identity);
+                GameObject effect2 = Instantiate(effectPrefab2, other.transform.position, Quaternion.identity);
                 Destroy(effect2, 2.0f);
-
                 Destroy(this.gameObject);
             }
         }
