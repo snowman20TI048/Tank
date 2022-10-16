@@ -7,30 +7,38 @@ public class DestroyObject : MonoBehaviour
     [SerializeField]
     private GameObject effectPrefab;
 
+    [SerializeField]
+    private GameObject effectPrefab2; // 2種類目のエフェクトを入れるための箱
+    public int objectHP;
+
 
     // このメソッドはコライダー同士がぶつかった瞬間に呼び出される
     private void OnTriggerEnter(Collider other)
     {
-        // もしもぶつかった相手のTagにShellという名前が書いてあったならば（条件）
         if (other.CompareTag("Shell"))
         {
-            // このスクリプトがついているオブジェクトを破壊する（thisは省略が可能）
-            Destroy(this.gameObject);
+            // ★★追加
+            // オブジェクトのHPを１ずつ減少させる。
+            objectHP -= 1;
 
-            // ぶつかってきたオブジェクトを破壊する
-            // otherがどこと繋がっているか考えてみよう！
-            Destroy(other.gameObject);
+            // ★★追加
+            // もしもHPが0よりも大きい場合には（条件）
+            if (objectHP > 0)
+            {
+                Destroy(other.gameObject);
+                GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+                Destroy(effect, 2.0f);
+            }
+            else // ★★追加  そうでない場合（HPが0以下になった場合）には（条件）
+            {
+                Destroy(other.gameObject);
 
+                // もう１種類のエフェクを発生させる。
+                GameObject effect2 = Instantiate(effectPrefab2, transform.position, Quaternion.identity);
+                Destroy(effect2, 2.0f);
 
-            // エフェクトを実体化（インスタンス化）する。
-            GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
-
-
-            // エフェクトを２秒後に画面から消す
-            Destroy(effect, 2.0f);
-
-
-
+                Destroy(this.gameObject);
+            }
         }
     }
 }
