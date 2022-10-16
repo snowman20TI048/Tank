@@ -34,7 +34,7 @@ public class TankMovement : MonoBehaviour
     {
         turnInputValue = Input.GetAxis("Horizontal");
         float turn = turnInputValue * turnSpeed * Time.deltaTime;
-        Quaternion turnRotation = Quaternion.Euler(0, turn, 0);
+        Quaternion turnRotation = Quaternion.Euler(0, turn, 0);  //‰ñ“]²‚ğŒˆ’è  .Euler‚ğ‚Â‚¯‚È‚¢‚ÆVector3Œ^‚©‚çQuaternionŒ^‚É•ÏŠ·‚µ‚Ä‚­‚ê‚È‚¢I ‰ñ“]‚·‚é‚É‚ÍQuaternionŒ^‚ª•K{I
         rb.MoveRotation(rb.rotation * turnRotation);
     }
 }
