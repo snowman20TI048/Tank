@@ -9,13 +9,15 @@ public class EnemyShotShell : MonoBehaviour
     private GameObject enemyShellPrefab;
     [SerializeField]
     private AudioClip shotSound;
+    private int timer;
+    [SerializeField]
     private int interval;
 
     void Update()
     {
-        interval += 1;
+        timer += 1;
 
-        if (interval % 60 == 0)
+        if (timer % interval == 0)
         {
             GameObject enemyShell = Instantiate(enemyShellPrefab, transform.position, Quaternion.identity);
 
