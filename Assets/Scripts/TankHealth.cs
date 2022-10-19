@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class TankHealth : MonoBehaviour
 {
     [SerializeField]
@@ -9,6 +11,9 @@ public class TankHealth : MonoBehaviour
     [SerializeField]
     private GameObject effectPrefab2;
     public int tankHP;
+
+    [SerializeField]
+    private AudioListener mainListener;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,8 +37,27 @@ public class TankHealth : MonoBehaviour
                 Destroy(effect2, 1.0f);
 
                 // プレーヤーを破壊する。
-                Destroy(gameObject);
+                // Destroy(gameObject);
+
+
+                // ★追加
+                // プレーヤーを破壊せずに画面から見えなくする（ポイント・テクニック）
+                // プレーヤーを破壊すると、その時点でメモリー上から消えるので、以降のコードが実行されなくなる。
+                mainListener.enabled = true; // オンにする
+                this.gameObject.SetActive(false);
+               
+
+                // ★追加
+                // 1.5秒後に「GoToGameOver()」メソッドを実行する。
+                Invoke("GoToGameOver", 1.5f);
+
             }
         }
+    }
+
+    // ★追加
+    void GoToGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }
