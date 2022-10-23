@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShotShell : MonoBehaviour
 {
@@ -19,6 +20,16 @@ public class ShotShell : MonoBehaviour
 
     public int shotCount;
 
+    // ★追加
+    [SerializeField]
+    private Text shellLabel;
+
+    // ★追加
+    // Startの「S」は大文字なので注意！
+    void Start()
+    {
+        shellLabel.text = "砲弾：" + shotCount;
+    }
 
 
     void Update()
@@ -29,6 +40,9 @@ public class ShotShell : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && timer > timeBetweenShot && shotCount > 0)
         {
             shotCount -= 1;
+
+
+            shellLabel.text = "砲弾：" + shotCount;
 
 
             // タイマーの時間を０に戻す。
