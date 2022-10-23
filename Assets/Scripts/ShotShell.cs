@@ -17,13 +17,20 @@ public class ShotShell : MonoBehaviour
     private float timer;
 
 
+    public int shotCount;
+
+
+
     void Update()
     {
         timer += Time.deltaTime;
         // もしもSpaceキーを押したならば（条件）
         // 「Space」の部分を変更することで他のキーにすることができる（ポイント）
-        if (Input.GetKeyDown(KeyCode.Space) && timer > timeBetweenShot)
+        if (Input.GetKeyDown(KeyCode.Space) && timer > timeBetweenShot && shotCount > 0)
         {
+            shotCount -= 1;
+
+
             // タイマーの時間を０に戻す。
             timer = 0.0f;
 
