@@ -13,12 +13,20 @@ public class ShotShell : MonoBehaviour
     [SerializeField]
     private AudioClip shotSound;
 
+    private float timeBetweenShot = 0.75f;
+    private float timer;
+
+
     void Update()
     {
+        timer += Time.deltaTime;
         // もしもSpaceキーを押したならば（条件）
         // 「Space」の部分を変更することで他のキーにすることができる（ポイント）
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && timer > timeBetweenShot)
         {
+            // タイマーの時間を０に戻す。
+            timer = 0.0f;
+
             // 砲弾のプレハブを実体化（インスタンス化）する。
             GameObject shell = Instantiate(shellPrefab, transform.position, Quaternion.identity);
 
