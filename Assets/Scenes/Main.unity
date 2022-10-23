@@ -1473,6 +1473,7 @@ MonoBehaviour:
   shellPrefab: {fileID: 8161757516544677034, guid: 551f7e7b80112a540bffbafc5fe19a22,
     type: 3}
   shotSound: {fileID: 8300000, guid: aa0f3b87622ead6479abcf152bf70ac9, type: 3}
+  shotCount: 10
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,7 +2340,7 @@ MonoBehaviour:
     type: 3}
   effectPrefab2: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  tankHP: 3
+  tankHP: 5
   mainListener: {fileID: 963194226}
 --- !u!1 &1947842283
 GameObject:
