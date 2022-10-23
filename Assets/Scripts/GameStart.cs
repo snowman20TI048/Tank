@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-// ★この１行を忘れないこと。
+using System.Collections;
+
+// ★追加
 using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
-    // 先頭に「public」が付いていることを確認する（ポイント）
-    public void OnStartButtonClicked()
-    {
-        SceneManager.LoadScene("Main");
-    }
+
+	// ★追加
+	// 「public」を必ずつけること（ポイント）
+	public void OnStartButtonClicked()
+	{
+		SceneManager.LoadScene("Main");
+	}
 }
