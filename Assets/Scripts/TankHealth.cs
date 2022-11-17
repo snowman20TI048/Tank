@@ -21,7 +21,12 @@ public class TankHealth : MonoBehaviour
 
     void Start()
     {
-        HPLabel.text = "HP:" + tankHP;
+       ShowHPLabel();
+    }
+
+    private void ShowHPLabel()
+    {
+        HPLabel.text = "HP : " + tankHP;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,7 +37,7 @@ public class TankHealth : MonoBehaviour
             // HP‚ğ‚P‚¸‚ÂŒ¸­‚³‚¹‚éB
             tankHP -= 1;
 
-            HPLabel.text = "HP:" + tankHP;
+            ShowHPLabel();
 
             // ‚Ô‚Â‚©‚Á‚Ä‚«‚½‘Šè•ûi“G‚Ì–C’ej‚ğ”j‰ó‚·‚éB
             Destroy(other.gameObject);

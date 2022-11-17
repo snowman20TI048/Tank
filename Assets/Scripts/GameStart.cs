@@ -8,7 +8,7 @@ public class GameStart : MonoBehaviour
 {
 
 	// ★追加
-	// 「public」を必ずつけること（ポイント）
+	// 「public」を必ずつけること（ポイント）これをつけないとボタンに登録できない
 	public void OnStartButtonClicked()
 	{
 		SceneManager.LoadScene("Main");

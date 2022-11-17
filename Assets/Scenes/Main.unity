@@ -2600,7 +2600,7 @@ MonoBehaviour:
     type: 3}
   effectPrefab2: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  tankHP: 5
+  tankHP: 3
   mainListener: {fileID: 963194226}
   HPLabel: {fileID: 1497262430}
 --- !u!1 &1947842283

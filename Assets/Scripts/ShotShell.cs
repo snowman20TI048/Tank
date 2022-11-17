@@ -28,9 +28,13 @@ public class ShotShell : MonoBehaviour
     // Startの「S」は大文字なので注意！
     void Start()
     {
-        shellLabel.text = "砲弾：" + shotCount;
+       ShowshellLabel();
     }
 
+    private void ShowshellLabel() 
+    {
+        shellLabel.text = "砲弾 : " + shotCount;
+    }
 
     void Update()
     {
@@ -42,7 +46,7 @@ public class ShotShell : MonoBehaviour
             shotCount -= 1;
 
 
-            shellLabel.text = "砲弾：" + shotCount;
+            ShowshellLabel();
 
 
             // タイマーの時間を０に戻す。
