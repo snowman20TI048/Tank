@@ -8,7 +8,7 @@ public class Radar : MonoBehaviour
     private Transform target;
 
     // 「OnTriggerStay」はトリガーが他のコライダーに触れている間中実行されるメソッド（ポイント）
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)//stayは入ってる間ずっと
     {
         // もしも他のオブジェクトに「Player」というTag（タグ）が付いていたならば（条件）
         if (other.CompareTag("Player"))

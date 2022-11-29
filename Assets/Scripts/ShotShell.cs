@@ -25,14 +25,22 @@ public class ShotShell : MonoBehaviour
     private Text shellLabel;
 
     // ★追加
-    // Startの「S」は大文字なので注意！
+    // 残弾数の最大値を設定する（最大値は自由）
+    public int shotMaxCount = 20;
+
     void Start()
     {
-       ShowshellLabel();
+        // ★追加
+        shotCount = shotMaxCount;
+
+        ShowshellLabel();
     }
 
     private void ShowshellLabel() 
     {
+        // ★追加
+        shotCount = shotMaxCount;
+
         shellLabel.text = "砲弾 : " + shotCount;
     }
 
@@ -69,4 +77,24 @@ public class ShotShell : MonoBehaviour
             AudioSource.PlayClipAtPoint(shotSound, transform.position);
         }
     }
+
+    // ★追加
+    // 残弾数を増加させるメソッド（関数・命令ブロック）
+    // 外部からこのメソッドを呼び出せるように「public」をつける（重要ポイント）
+    // この「AddShellメソッド」を「ShellItem」スクリプトから呼び出す。
+    public void AddShell(int amount)
+    {
+        // shotCountをamount分だけ回復させる
+        shotCount += amount;
+
+        // ただし、残弾数が最大値を超えないようする。(最大値は自由に設定)
+        if (shotCount > shotMaxCount)
+        {
+            shotCount = shotMaxCount;
+        }
+
+        // 回復をUIに反映させる。
+        shellLabel.text = "砲弾：" + shotCount;
+    }
+
 }
