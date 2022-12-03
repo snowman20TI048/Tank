@@ -38,9 +38,7 @@ public class ShotShell : MonoBehaviour
 
     private void ShowshellLabel() 
     {
-        // Åöí«â¡
-        shotCount = shotMaxCount;
-
+       
         shellLabel.text = "ñCíe : " + shotCount;
     }
 

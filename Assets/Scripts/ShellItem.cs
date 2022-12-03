@@ -19,14 +19,11 @@ public class ShellItem : MonoBehaviour
             // Find()メソッドは、「名前」でオブジェクトを探し特定します。
             // 「ShotShell」オブジェクトを探し出して、それに付いている「ShotShell」スクリプト（component）のデータを取得。
             // 取得したデータを「ss」の箱の中に入れる。
-            ss = GameObject.Find("ShotShell").GetComponent<ShotShell>();
+            ss = other.gameObject.transform.GetChild(3).gameObject.GetComponent<ShotShell>(); //GameObject.Find("ShotShell").GetComponent<ShotShell>()
 
             //  ShotShellスクリプトの中に記載されている「AddShellメソッド」を呼び出す。
             // rewardで設定した数値分だけ弾数が回復する。
             ss.AddShell(reward);
-
-            // アイテムを画面から削除する。
-            Destroy(gameObject);
 
             // アイテムゲット音を出す。
             AudioSource.PlayClipAtPoint(getSound, transform.position);
@@ -36,6 +33,9 @@ public class ShellItem : MonoBehaviour
 
             // エフェクトを0.5秒後に消す。
             Destroy(effect, 0.5f);
+
+            // アイテムを画面から削除する。
+            Destroy(gameObject);
         }
     }
 }

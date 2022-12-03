@@ -33,10 +33,18 @@ public class EnemyShotShell : MonoBehaviour
         if (stopTimer < 0)
         {
             stopTimer = 0;
+
         }
 
+        if (stopTimer > 0) {
         // ★追加
         stopLabel.text = "" + stopTimer.ToString("0"); // 小数点以下は切り捨て
+
+        }
+        else
+        {
+            stopLabel.text = "";
+        }
 
         if (timer % interval == 0 && stopTimer <= 0)
         {
@@ -62,7 +70,7 @@ public class EnemyShotShell : MonoBehaviour
         stopTimer += amount;
 
         // ★追加
-        stopLabel.text = "" + stopTimer.ToString("0");
+        stopLabel.text = "" + stopTimer.ToString("0");  //ToString("0")の"0"は、小数点を表示しないという意味。
     }
 
     
